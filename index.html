@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		body {
+				width: 100%;
+				height: 100%;
+				background-color: #202020;
+		}
+
+		div {
+					position:absolute;
+				height:100%;
+				width:100%;
+				display: table;
+		}
+
+		h1 {
+					display: table-cell;
+				vertical-align: middle;
+				text-align:center;
+				color: #FFFFFF;
+		}
+		.cards {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: flex-start;
+			flex-direction: row;
+			max-height: 100vh;
+		}
+		.cards img {
+			margin: 10px;
+			border: 3px solid #000;
+			box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.3); 
+			max-width: 23vw;
+		}
+		.cards img:hover {
+			box-shadow: 6px 6px 16px 0px rgba(255, 0, 0, 0.3); 
+		}
+	</style>
+	
+	<script type="text/javascript">
+		function load() {
+        document.addEventListener("cursorStateChange", onCursor, false);
+        document.addEventListener("visibilitychange", function () { Log(document.visibilityState);}, false);
+        window.addEventListener("blur", function() { Log("Focus off");}, false);
+        window.addEventListener("focus", function() { Log("Focus on");}, false);
+    }
+ 
+    function onCursor(event) {
+        if (event.detail.visibility)
+            Log("Cursor on");
+        else
+            Log("Cursor off");
+    }
+ 
+    var line = 0;
+    function Log( msg ) {
+        console.log(msg);
+        document.getElementById('log').innerHTML += ++line + ": " + msg + "<br>";
+		}
+		
+		function cursorVisibilityChange(event) {
+				var visibility = event.detail.visibility;
+				if(visibility){
+						console.log("Cursor appeared");
+						// Do something.
+				}
+				else{
+						console.log("Cursor disappeared");
+						// Do something.
+				}
+		}
+		document.addEventListener('cursorStateChange', cursorVisibilityChange, false);
+	</script>
+</head>
+<body onload="load()">
+	<main class="cards">
+		<img src="https://www.quackit.com/pix/samples/23m.jpg" alt="Sample photo" onclick="console.log('1')">
+		<img src="https://www.quackit.com/pix/samples/24m.jpg" alt="Sample photo" onclick="console.log('2')">
+		<img src="https://www.quackit.com/pix/samples/22m.jpg" alt="Sample photo" onclick="console.log('3')">
+		<img src="https://www.quackit.com/pix/samples/28m.jpg" alt="Sample photo" onclick="console.log('4')">
+		<img src="https://www.quackit.com/pix/samples/29m.jpg" alt="Sample photo" onclick="console.log('5')">
+		<img src="https://www.quackit.com/pix/samples/30m.jpg" alt="Sample photo" onclick="console.log('6')">
+		<img src="https://www.quackit.com/pix/samples/27m.jpg" alt="Sample photo" onclick="console.log('7')">
+		<img src="https://www.quackit.com/pix/samples/32m.jpg" alt="Sample photo" onclick="console.log('8')">
+		<img src="https://www.quackit.com/pix/samples/33m.jpg" alt="Sample photo" onclick="console.log('9')">
+	</main>
+	<div id="log"> </div>
+</body>
+</html>
